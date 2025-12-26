@@ -8,6 +8,13 @@ class BackgroundRemover {
   static Future<Uint8List> removeBackground(File imageFile) async {
     // Read the image file
     final bytes = await imageFile.readAsBytes();
+    
+    // Check file size to prevent memory issues
+    // Limit to approximately 10MB to ensure smooth processing
+    if (bytes.length > 10 * 1024 * 1024) {
+      throw Exception('Image too large. Please use an image smaller than 10MB.');
+    }
+    
     final image = img.decodeImage(bytes);
 
     if (image == null) {

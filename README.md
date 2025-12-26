@@ -125,7 +125,6 @@ The app uses an intelligent edge detection and color thresholding algorithm:
 - `image` - For image processing and manipulation
 - `path_provider` - For accessing device storage
 - `permission_handler` - For managing platform permissions
-- `file_picker` - For file selection
 
 ## 🤝 Contributing
 

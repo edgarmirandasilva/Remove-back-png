@@ -98,7 +98,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
       Directory directory;
       if (Platform.isAndroid) {
-        // Try to get external storage directories
+        // Using getExternalStorageDirectories for app-specific storage
+        // Note: Files saved here are accessible within the app's directory
+        // For user-accessible storage (like Downloads), consider using
+        // MediaStore API or getExternalStorageDirectory (requires broader permissions)
         final externalDirs = await getExternalStorageDirectories();
         if (externalDirs != null && externalDirs.isNotEmpty) {
           directory = externalDirs.first;
