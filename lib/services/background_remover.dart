@@ -41,6 +41,9 @@ class BackgroundRemover {
     avgBlue ~/= cornerColors.length;
 
     // Threshold for color similarity (adjust for better results)
+    // Value of 40 works well for most images with uniform backgrounds
+    // Lower values = more aggressive removal (may remove foreground)
+    // Higher values = less aggressive removal (may leave background)
     const double threshold = 40.0;
 
     // Process each pixel
@@ -69,7 +72,7 @@ class BackgroundRemover {
     }
 
     // Apply edge refinement for smoother edges
-    final refined = _refineEdges(output, threshold);
+    final refined = _refineEdges(output);
 
     // Encode as PNG with transparency
     final pngBytes = img.encodePng(refined);
@@ -77,7 +80,7 @@ class BackgroundRemover {
   }
 
   /// Refine edges using a simple blur and threshold technique
-  static img.Image _refineEdges(img.Image image, double threshold) {
+  static img.Image _refineEdges(img.Image image) {
     final refined = img.Image(
       width: image.width,
       height: image.height,

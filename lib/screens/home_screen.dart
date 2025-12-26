@@ -98,8 +98,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
       Directory directory;
       if (Platform.isAndroid) {
-        directory = Directory('/storage/emulated/0/Download');
-        if (!await directory.exists()) {
+        // Try to get external storage directories
+        final externalDirs = await getExternalStorageDirectories();
+        if (externalDirs != null && externalDirs.isNotEmpty) {
+          directory = externalDirs.first;
+        } else {
           directory = await getApplicationDocumentsDirectory();
         }
       } else {
