@@ -1,0 +1,24 @@
+name: remove_background_app
+description: A multiplatform app that removes background from images and saves as PNG
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  image_picker: ^1.0.7
+  image: ^4.1.7
+  path_provider: ^2.1.2
+  permission_handler: ^11.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
